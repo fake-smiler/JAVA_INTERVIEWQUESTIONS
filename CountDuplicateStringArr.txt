@@ -1,0 +1,33 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CountDuplicateStringArr {
+
+public static void main(String[] args) {
+        String[] inputArray = {"a", "b", "c", "a", "b", "c", "a", "e"};
+        printOddDuplicateCounts(inputArray);
+    }
+
+    public static void printOddDuplicateCounts(String[] arr) {
+        HashMap<String, Integer> duplicateCounts = new HashMap<String, Integer>();
+        for (String item : arr) {
+        	//System.out.println(duplicateCounts.keySet());
+        	//System.out.println(duplicateCounts.values());
+            if (duplicateCounts.containsKey(item)) {            
+                int count = duplicateCounts.get(item);
+                duplicateCounts.put(item, count + 1);
+            } else {
+    
+                duplicateCounts.put(item, 1);
+            }
+        }
+
+        for (Map.Entry<String, Integer> entry : duplicateCounts.entrySet()) {
+            String item = entry.getKey();
+            int count = entry.getValue();
+            if (count % 2 != 0) {
+                System.out.println("Count of duplicate value of : " + item + " : " + count + " odd number ");
+            }
+        }
+    }
+}
